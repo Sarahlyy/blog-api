@@ -1,4 +1,3 @@
-import { Error } from "mongoose";
 import { articleModel } from "../models/article.js";
 
 
@@ -46,11 +45,21 @@ export const removeArticle = async (req, res,next) => {
 export const patchArticle = async (req, res,next) => {
     try {
         const subject = req.body.articleSubject
-        const addData = await articleModel.findByIdAndUpdate(req.params.id, { articleSubject:subject },)
+        const addData = await articleModel.findByIdAndUpdate(req.params.id, req.body,{new:true})
         res.json(addData)
 
     } catch (error) {
         next(error);
     }
 };
-    
+
+export const patchfavorite = async (req, res,next) => {
+    try {
+        const newfavorite = req.body.favorite
+        const addfavorite = await articleModel.findByIdAndUpdate(req.params.id, req.body,{new:true})
+        res.json(addfavorite)
+
+    } catch (error) {
+        next(error);
+    }
+};

@@ -8,7 +8,8 @@ const articleSchema=  new Schema ({
         content: {type:String},     
         author: {type:String},
         image :{type:String},  
-        articleSubject:{type:String,enum:['Coding','Data Mining']}
+        articleSubject:{type:String,enum:['Coding','Data Mining']},
+        favorite:{type:Boolean ,default:false}
 
       
 },{
